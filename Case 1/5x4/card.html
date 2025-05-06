@@ -12,7 +12,7 @@
     <p>
       Match all the pairs of cards to win the game. Click on a card to flip it. 
       If two flipped cards match, they stay flipped. Otherwise, they flip back. 
-      Try to match all pairs in the least number of moves!
+      Try to match all pairs to obtain the hint.
     </p>
     <button id="playButton">Play</button>
   </div>
@@ -27,6 +27,10 @@
     <button id="continueButton">Continue</button>
   </div>
 
+  <!-- Overlay to transition -->
+  <div class="transition hidden" id="transition">
+    <p>Back to Scene...</p>
+  </div>
   <script src="card.js"></script>
 </body>
 </html>

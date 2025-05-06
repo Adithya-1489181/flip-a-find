@@ -1,6 +1,6 @@
 const dialogues = [
-  { speaker: "Watson", text: "Dahlia… She was Elira’s accompanist. Is she missing too?" },
-  { speaker: "Sherlock", text: "Dahlia isn’t missing. I believe she’s involved. And Moriarty’s using her as his instrument. Let's give her a visit." }
+  { speaker: "Watson", text: "Strain --- as in tension? Or a musical phrasing?" },
+  { speaker: "Sherlock", text: "The strain isn't just musical, Watson. Someone's been hiding something in the score itself. Let's revisit the concert hall." }
 ];
 
 let index = 0;
@@ -93,7 +93,7 @@ function transitionToCardGame() {
 
   // Wait for 2 seconds before redirecting
   setTimeout(() => {
-    window.location.href = "./part2scene1.html"; // Redirect to the card game
+    window.location.href = "./part3scene1.html"; // Redirect to the card game
   }, 2000);
 }
 

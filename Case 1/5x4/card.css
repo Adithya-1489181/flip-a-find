@@ -126,6 +126,62 @@ h1 {
     background-color: #45a049;
 }
 
+/* Final overlay styling */
+.final-overlay {
+    position: fixed; /* Ensures the overlay is fixed to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensures the overlay spans the full width of the screen */
+    height: 100%; /* Ensures the overlay spans the full height of the screen */
+    background-color: rgba(0, 0, 0, 0.8); /* Black transparent background */
+    color: white;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000; /* Ensures it appears above other elements */
+    padding: 0px;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 100%; /* Ensures the content stays within the screen */
+    margin: 0; /* Removes any unintended horizontal offset */
+}
+
+.final-overlay h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #4caf50;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 90%; /* Ensures the heading stays within the screen */
+}
+
+.final-overlay p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 90%; /* Ensures the paragraph stays within the screen */
+}
+
+.final-overlay button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.final-overlay button:hover {
+    background-color: #45a049;
+}
+
 /* Responsive adjustments for larger screens */
 @media (min-width: 768px) {
     .game-board {

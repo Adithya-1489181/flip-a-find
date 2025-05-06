@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Georgia', serif;
-  background: url('../images/dressing room.jpg') no-repeat center center fixed;
+  background: url('../images/living-room.jpg') no-repeat center center fixed;
   background-size: cover;
   height: 100vh;
   color: white;
@@ -17,8 +17,6 @@ body {
   width: 100%;
   height: 100%;
   position: relative;
-  background: url('../images/dressing room.jpg') no-repeat center center fixed;
-  background-size: cover;
   overflow: hidden;
 }
 
@@ -27,7 +25,7 @@ body {
   position: absolute;
   top: 10%;
   left: 45%;
-  max-width: 10vw; /* Default size for larger screens */
+  max-width: 10vw;
   cursor: pointer;
   animation: glow 2s infinite alternate;
 }
@@ -45,7 +43,7 @@ body {
   bottom: 5%;
   left: 5%;
   width: 90%;
-  max-width: 1000px; /* Ensure consistent max width */
+  max-width: 2000px; /* Increase max width to allow larger characters */
   gap: 1rem;
 }
 
@@ -70,13 +68,10 @@ body {
 
 /* Speech Bubbles */
 .speech {
-  max-width: 70%; /* Default max width */
+  max-width: 70%;
   padding: 1rem 1.5rem;
   border-radius: 15px;
   box-shadow: 0 0 10px #000;
-  word-wrap: break-word; /* Ensure long words break to the next line */
-  overflow-wrap: break-word; /* Handle long words gracefully */
-  position: relative; /* Ensure it stays within the container */
 }
 
 .sherlock {
@@ -97,6 +92,7 @@ body {
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
   font-family: 'Arial Rounded MT Bold', sans-serif;
+  position: relative;
 }
 
 /* Style for the Continue button inside dialogue bubbles */
@@ -113,24 +109,22 @@ body {
 }
 
 /* Default Style for the Continue Button */
-.continue-button,
-.continue-button2 {
+.continue-button {
   display: block;
   margin: 1rem auto; /* Center the button horizontally */
-  padding: 0.5rem 1rem; /* Reduced padding (half of the original) */
-  font-size: 0.75rem; /* Reduced font size (half of the original) */
+  padding: 1rem 2rem; /* Default padding */
+  font-size: 1.5rem; /* Default font size */
   border: none;
   background: #222;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 /* Hover Effect */
-.continue-button:hover,
-.continue-button2:hover {
+.continue-button:hover {
   background: #444;
   transform: scale(1.05);
 }
@@ -187,6 +181,28 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Default Style for the Continue Button */
+.continue-button2 {
+  display: block;
+  margin: 1rem auto; /* Center the button horizontally */
+  padding: 1rem 2rem; /* Default padding */
+  font-size: 1.5rem; /* Default font size */
+  border: none;
+  background: #222;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover Effect */
+.continue-button2:hover {
+  background: #444;
+  transform: scale(1.05);
+}
+
 
 /* Media Query for Larger Screens (1024px and above) */
 @media (min-width: 1024px) {
@@ -287,7 +303,7 @@ body {
   }
 
   .watson {
-    left: -5em;
+    left: -20%;
     margin-right: -16em;
     font-size: 0.9rem; /* Adjust font size for mobile screens */
   }
@@ -303,7 +319,7 @@ body {
   }
   .watson-container {
     bottom: 8%; /* Adjust position for mobile screens */
-    left: -20%; /* Keep Watson aligned to the left edge */
+    left: -28%; /* Keep Watson aligned to the left edge */
     width: 100%; /* Ensure the container fits within the screen */
     gap: 10vw; /* Increase gap for better spacing */
   }

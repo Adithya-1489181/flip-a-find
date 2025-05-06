@@ -1,19 +1,13 @@
-const initialDialogue = [{ speaker: "Sherlock", text: "This is the place of disappearance, Watson. Even though the violinist has vanished, an envelope has appeared. Just click and open to see whats inside." }];
 const dialogues = [
-  { speaker: "Watson", text: "That’s Moriarty’s signature, isn’t it? But why would he care about a violinist?" },
-  { speaker: "Sherlock", text: "Because it isn’t about the violinist, Watson. It’s about the performance she was a part of. He is hinting us to play this card game he has given. I guess this has the clue." }
+  { speaker: "Watson", text: "Strain --- as in tension? Or a musical phrasing?" },
+  { speaker: "Sherlock", text: "The strain isn't just musical, Watson. Someone's been hiding something in the score itself. Let's revisit the concert hall." }
 ];
-
-const letterContent = "Dear Holmes, the melody fractured, yet a name hides in its echoes. A game awaits, should you wish to hear it. – Moriarty";
 
 let index = 0;
 const sherlockContainer = document.querySelector(".sherlock-container");
 const watsonContainer = document.querySelector(".watson-container");
 const dialogueSherlock = document.getElementById("dialogue-sherlock");
 const dialogueWatson = document.getElementById("dialogue-watson");
-const envelope = document.getElementById("envelope");
-const letter = document.getElementById("letter");
-const letterText = document.getElementById("letter-text");
 const transition = document.getElementById("transition");
 
 const typeSound = new Audio("../audio/typewriter.mp3");
@@ -62,11 +56,10 @@ function showNextDialogue() {
       watsonContainer.classList.remove("hidden");
       sherlockContainer.classList.add("hidden");
       typeText(dialogueWatson, currentDialogue.text, () => {
-        // Add a delay of 1400ms before proceeding to the next dialogue
         setTimeout(() => {
           index++; // Increment the index after Watson's dialogue
           showNextDialogue(); // Proceed to the next dialogue
-        }, 1400);
+        }, 1800);
       });
     }
   } else {
@@ -94,58 +87,17 @@ function showNextDialogue() {
   }
 }
 
-function highlightEnvelope() {
-  envelope.classList.add("highlight");
-  envelope.addEventListener("click", () => {
-    envelope.classList.remove("highlight");
-    envelope.style.display = "none";
-    showLetter();
-  });
-}
-
-function showLetter() {
-  console.log("Showing letter..."); // Debugging log
-  letter.classList.remove("hidden"); // Remove the hidden class
-  letter.style.display = "block"; // Ensure the letter is visible
-
-  typeText(letterText, letterContent, () => {
-    const continueButton = document.createElement("button");
-    continueButton.textContent = "Continue →";
-    continueButton.classList.add("continue-button"); // Add the CSS class
-    letter.appendChild(continueButton); // Append the button to the letter
-
-    continueButton.addEventListener("click", () => {
-      letter.style.display = "none"; // Hide the letter
-      showNextDialogue(); // Proceed to the next dialogue
-    });
-  });
-}
-
 function transitionToCardGame() {
-  console.log("Transition to card game started..."); // Debugging log
-
-  // Check if the transition element exists
-  if (!transition) {
-    console.error("Transition element not found!");
-    return;
-  }
-
-  // Log the current class list of the transition element
-  console.log("Before removing 'hidden':", transition.classList);
-
   // Remove the 'hidden' class to show the transition overlay
   transition.classList.remove("hidden");
-  console.log("After removing 'hidden':", transition.classList);
 
   // Wait for 2 seconds before redirecting
   setTimeout(() => {
-    console.log("Redirecting to memory-game.html..."); // Debugging log
-    window.location.href = "./4x4/card.html"; // Redirect to the card game
+    window.location.href = "./part3scene1.html"; // Redirect to the card game
   }, 2000);
 }
 
-// Start the scene
-typeText(dialogueSherlock, initialDialogue[0].text, highlightEnvelope);
+showNextDialogue(); // Start the dialogue sequence
 
 // const notebook = document.getElementById('notebook');
 // const btn = document.getElementById('notebook-btn');
@@ -190,7 +142,7 @@ typeText(dialogueSherlock, initialDialogue[0].text, highlightEnvelope);
 //   },
 //   {
 //     title: "Case #1: The Vanishing Violinist",
-//     content: `<ul><li>Victim: Elira Serafin</li><li>No witnesses</li><li>Only a mirror box note</li></ul>`
+//     content: `<ul><li>Victim: Elira Serafin</li><li>No witnesses</li><li>Only a mirror box note</li><li>Suspect: Dahlia</li></ul>`
 //   }
 // ];
 

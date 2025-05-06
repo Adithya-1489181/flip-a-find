@@ -6,7 +6,7 @@ const finalWordDiv = document.getElementById('finalWord');
 const finalOverlay = document.getElementById('finalOverlay'); // Final overlay div
 const finalMessage = document.getElementById('finalMessage'); // Final word message
 const continueButton = document.getElementById('continueButton'); // Continue button
-const emojis = ['D', 'A', 'H', 'L', 'I', '🎻', '🎼', '🎵', '🎤', '🎹']; // Add more emojis
+const emojis = ['S', 'T', 'R', 'A', 'I', 'N', '🎼', '🎵', '🎤', '🎹']; // Add more emojis
 let cards = [...emojis, ...emojis]; // duplicate for matching
 let firstCard, secondCard;
 let lockBoard = false;
@@ -96,10 +96,34 @@ function showFinalOverlay() {
 
 // Handle continue button click
 continueButton.addEventListener('click', () => {
-  finalOverlay.style.display = 'none'; // Hide the overlay
+  transitionToCardGame();
 });
 
 function resetTurn() {
   [firstCard, secondCard] = [null, null];
   lockBoard = false;
 }
+
+function transitionToCardGame() {
+  console.log("Transition to card game started..."); // Debugging log
+
+  // Check if the transition element exists
+  if (!transition) {
+    console.error("Transition element not found!");
+    return;
+  }
+
+  // Log the current class list of the transition element
+  console.log("Before removing 'hidden':", transition.classList);
+
+  // Remove the 'hidden' class to show the transition overlay
+  transition.classList.remove("hidden");
+  console.log("After removing 'hidden':", transition.classList);
+
+  // Wait for 2 seconds before redirecting
+  setTimeout(() => {
+    console.log("Redirecting to memory-game.html..."); // Debugging log
+    window.location.href = "../part2scene2.html"; // Redirect to the card game
+  }, 2000);
+}
+
