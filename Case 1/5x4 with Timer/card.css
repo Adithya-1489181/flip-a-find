@@ -1,0 +1,342 @@
+/* styles.css */
+body {
+    background-image: url('./background.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center;
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns for 5x4 grid */
+    gap: 10px;
+    width: 90vw; /* Use 90% of the viewport width */
+    max-width: 600px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the grid horizontally */
+    justify-content: center; /* Ensure grid content is centered */
+    align-items: center; /* Ensure grid content is vertically aligned */
+}
+
+.card {
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Maintain a 2:3 aspect ratio */
+    perspective: 1000px;
+    min-width: 55px; /* Slightly smaller width */
+    min-height: 85px; /* Slightly smaller height */
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em; /* Adjust font size for smaller cards */
+}
+
+.card-front {
+    background: url('Violin.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-back {
+    background: #4caf50;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Styling for the instructions section */
+.instructions {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ensures the overlay spans the full viewport width */
+    height: 100vh; /* Ensures the overlay spans the full viewport height */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    z-index: 1000; /* Ensures it appears above other elements */
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 100%; /* Ensures the content stays within the screen */
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+.instructions h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    max-width: 90%; /* Ensures the heading stays within the screen */
+}
+
+.instructions p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    max-width: 90%; /* Ensures the paragraph stays within the screen */
+    overflow-wrap: break-word; /* Ensures text wraps properly */
+    word-wrap: break-word; /* Compatibility for older browsers */
+}
+
+.instructions button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.instructions button:hover {
+    background-color: #45a049;
+}
+
+/* Timer styling */
+.timer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
+    .game-board {
+        width: 80vw; /* Use 80% of the viewport width */
+        max-width: 700px; /* Increase max width for larger screens */
+    }
+
+    .card {
+        min-width: 75px; /* Slightly smaller width for larger screens */
+        min-height: 110px; /* Slightly smaller height for larger screens */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .game-board {
+        width: 85vw; /* Slightly reduce width for iPads */
+        max-width: 600px;
+        margin: 0 auto; /* Ensure horizontal centering */
+    }
+}
+
+@media (min-width: 1024px) {
+    .game-board {
+        width: 70vw; /* Use 70% of the viewport width */
+        max-width: 800px; /* Further increase max width for larger screens */
+    }
+
+    .card {
+        min-width: 95px; /* Slightly smaller width for larger screens */
+        min-height: 140px; /* Slightly smaller height for larger screens */
+    }
+}
+
+/* Responsive adjustments for 5x4 grid */
+@media (min-width: 425px) {
+    .game-board {
+        width: min(80vw, 500px);
+    }
+}
+
+@media (min-width: 478px) {
+    .game-board {
+        width: min(60vw, 500px);
+    }
+}
+
+@media (min-width: 578px) {
+    .game-board {
+        width: min(50vw, 500px);
+    }
+}
+
+@media (min-width: 735px) {
+    .game-board {
+        width: min(40vw, 500px);
+        margin-top: 10em;
+    }
+}
+
+@media (min-width: 900px) {
+    .game-board {
+        width: min(28vw, 500px);
+    }
+}
+
+@media (min-width: 1020px) {
+    .game-board {
+        margin-top: 0em;
+    }
+}
+
+/* Reduce card size for screens below 344px */
+@media (max-width: 344px) {
+    .card {
+        min-width: 45px; /* Slightly smaller width for very small screens */
+        min-height: 70px; /* Slightly smaller height for very small screens */
+    }
+
+    .card-front, .card-back {
+        font-size: 1.2em; /* Adjust font size for smaller cards */
+    }
+}
+
+/* Styling for the final word */
+.final-word {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 0.5em; /* Adjust spacing between letters */
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    word-wrap: break-word; /* Ensure long words wrap */
+    overflow-wrap: break-word; /* Compatibility for modern browsers */
+    max-width: 90%; /* Ensure it stays within the screen width */
+    max-height: 20vh; /* Limit the height to 20% of the viewport */
+    white-space: normal; /* Allow wrapping to the next line */
+    overflow: hidden; /* Prevent overflow if the word is too long */
+}
+
+.final-word.complete {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: #4caf50;
+    z-index: 1001;
+}
+
+/* Final overlay styling */
+.final-overlay {
+    position: fixed; /* Ensures the overlay is fixed to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensures the overlay spans the full width of the screen */
+    height: 100%; /* Ensures the overlay spans the full height of the screen */
+    background-color: rgba(0, 0, 0, 0.8); /* Black transparent background */
+    color: white;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000; /* Ensures it appears above other elements */
+    padding: 0px;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 100%; /* Ensures the content stays within the screen */
+    margin: 0; /* Removes any unintended horizontal offset */
+}
+
+.final-overlay h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #4caf50;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 90%; /* Ensures the heading stays within the screen */
+}
+
+.final-overlay p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 90%; /* Ensures the paragraph stays within the screen */
+}
+
+.final-overlay button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.final-overlay button:hover {
+    background-color: #45a049;
+}
+
+/* Failed overlay styling (similar to instructions) */
+.failed-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+}
+
+.failed-overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.failed-overlay button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.failed-overlay button:hover {
+    background-color: #45a049;
+}

@@ -1,0 +1,160 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Special Elite', cursive;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  .bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+  }
+  
+  .sherlock-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100vh;
+    padding: 2rem;
+  }
+  
+  .sherlock {
+    height: 60vh;
+    max-height: 600px;
+    margin-right: 20px;
+    object-fit: contain;
+    image-rendering: auto; /* helps with some render issues */
+  }  
+
+  /* Watson's container */
+  .watson-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100vh;
+    padding: 2rem;
+  }
+
+  /* Watson's image */
+  .watson {
+    height: 60vh;
+    max-height: 600px;
+    margin-right: 20px;
+    object-fit: contain;
+    image-rendering: auto;
+    transform: translateX(120px);
+  }
+  
+  .bubble-container {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #333;
+    margin-right: 2em;
+    max-width: 50vw;
+    position: relative;
+    font-size: 1.1rem;
+    animation: fadeIn 1s ease;
+    transform: translateY(-200px); /* move up the bubble */
+  }
+  
+  .bubble-container::after {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    border: 10px solid transparent;
+    border-right: 15px solid #fff;
+  }
+
+  /* Sherlock's bubble */
+  .sherlock-container .bubble-container {
+    background: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #333;
+    margin-right: 2em;
+    max-width: 50vw;
+    position: relative;
+    font-size: 1.1rem;
+    animation: fadeIn 1s ease;
+    transform: translateY(-200px); /* move up the bubble */
+  }
+
+  .sherlock-container .bubble-container::after {
+    content: "";
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    border: 10px solid transparent;
+    border-right: 15px solid #fff;
+  }
+
+  /* Watson's bubble */
+  .watson-container .bubble-container {
+    background: #fff;
+    padding: 1.2rem 1.7rem;
+    border-radius: 15px;
+    border: 2px solid #333;
+    margin-right: 15em; /* Adjust margin for Watson */
+    max-width: 52vw;
+    position: relative;
+    font-size: 1.1rem;
+    animation: fadeIn 1s ease;
+    transform: translateY(-200px); /* move up the bubble */
+  }
+
+  .watson-container .bubble-container::after {
+    content: "";
+    position: absolute;
+    right: -15px; /* Adjust arrow position for Watson */
+    top: 20px;
+    border: 10px solid transparent;
+    border-left: 15px solid #fff;
+  }
+  
+  #nextBtn {
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  #nextBtn:hover {
+    background: #444;
+  }
+
+  #nextBtnWatson {
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    background: #222;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  #nextBtnWatson:hover {
+    background: #444;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-200px); }
+    to { opacity: 1; transform: translateY(-200px); }
+  }
+  
+  .hidden {
+    display: none;
+  }
+  

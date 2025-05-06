@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Memory Card Game</title>
+  <link rel="stylesheet" href="card.css" />
+</head>
+<body>
+  <div class="instructions" id="instructions">
+    <h2>How to Play</h2>
+    <p>
+      Match all the pairs of cards to win the game. Click on a card to flip it. 
+      If two flipped cards match, they stay flipped. Otherwise, they flip back. 
+      Try to match all pairs in the least number of moves!
+    </p>
+    <button id="playButton">Play</button>
+  </div>
+
+  <div class="game-board" id="gameBoard"></div>
+  <div class="final-word" id="finalWord"></div>
+
+  <!-- Final overlay div -->
+  <div class="final-overlay" id="finalOverlay">
+    <h2 id="finalMessage"></h2>
+    <p>Hey there, you've got the word!</p>
+    <button id="continueButton">Continue</button>
+  </div>
+
+  <script src="card.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,299 @@
+/* styles.css */
+body {
+    background-image: url('./background.jpg');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center;
+    background-attachment: fixed; /* Keeps the background fixed during scrolling */
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Ensure the game board and final word are properly aligned */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Ensures elements are stacked from the top */
+    gap: 2vh; /* Adds spacing between elements */
+    width: 100%;
+    height: auto; /* Allows the container to adjust its height dynamically */
+    padding: 2vh 0;
+    box-sizing: border-box;
+    position: relative; /* Ensures proper positioning of child elements */
+}
+
+/* Responsive game board styling */
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Maintains 4 columns */
+    gap: 1vw; /* Adjusted gap for better spacing */
+    width: min(90vw, 90vh); /* Ensures the board takes up 90% of the smaller viewport dimension */
+    height: min(90vw, 90vh); /* Ensures the board takes up 90% of the smaller viewport dimension */
+    margin: 0 auto; /* Centers the game board */
+    z-index: 1; /* Ensures the game board is above other elements */
+}
+
+/* Card styling */
+.card {
+    width: 100%; /* Cards take up the full width of their grid cell */
+    aspect-ratio: 2 / 3; /* Maintains the card's aspect ratio */
+    perspective: 1000px;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(1.5vw + 1.5vh); /* Dynamically adjusts font size based on screen size */
+}
+
+.card-front {
+    background: url('Violin.png');
+    background-size: cover;   /* or use 'contain' depending on your preference */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-back {
+    background: #4caf50;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Styling for the instructions section */
+.instructions {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw; /* Ensures the overlay spans the full viewport width */
+    height: 100vh; /* Ensures the overlay spans the full viewport height */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0px;
+    z-index: 1000; /* Ensures it appears above other elements */
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 100%; /* Ensures the content stays within the screen */
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+.instructions h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    max-width: 90%; /* Ensures the heading stays within the screen */
+}
+
+.instructions p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    max-width: 90%; /* Ensures the paragraph stays within the screen */
+    overflow-wrap: break-word; /* Ensures text wraps properly */
+    word-wrap: break-word; /* Compatibility for older browsers */
+}
+
+.instructions button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.instructions button:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the final word */
+.final-word {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5vh; /* Dynamically adjusts font size based on screen height */
+    font-weight: bold;
+    letter-spacing: 0.5vw;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 2vh; /* Adds spacing between the game board and the final word */
+    position: relative; /* Keeps it in the normal document flow */
+    z-index: 2;
+}
+
+/* Fix for ensuring the final word is below the game board */
+.container > .game-board + .final-word {
+    margin-top: 28vh; /* Adds consistent spacing between the game board and the final word */
+    align-self: center; /* Ensures the final word is centered below the game board */
+}
+
+.final-word.complete {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: #4caf50;
+    z-index: 1001;
+}
+
+/* Final overlay styling */
+.final-overlay {
+    position: fixed; /* Ensures the overlay is fixed to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ensures the overlay spans the full width of the screen */
+    height: 100%; /* Ensures the overlay spans the full height of the screen */
+    background-color: rgba(0, 0, 0, 0.8); /* Black transparent background */
+    color: white;
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000; /* Ensures it appears above other elements */
+    padding: 0px;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 100%; /* Ensures the content stays within the screen */
+    margin: 0; /* Removes any unintended horizontal offset */
+}
+
+.final-overlay h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #4caf50;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 90%; /* Ensures the heading stays within the screen */
+}
+
+.final-overlay p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    overflow-wrap: break-word; /* Ensures long words break */
+    word-wrap: break-word; /* Compatibility for older browsers */
+    max-width: 90%; /* Ensures the paragraph stays within the screen */
+}
+
+.final-overlay button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.final-overlay button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 1025px) {
+    .game-board {
+        gap: 0.5vw; /* Reduces the gap for larger screens */
+        width: min(50vw, 50vh); /* Decreases the board size for larger screens */
+        height: min(50vw, 50vh); /* Decreases the board size for larger screens */
+    }
+
+    .final-word {
+        font-size: 2vh; /* Adjusts font size for larger screens */
+        margin-top: 1.5vh; /* Adjust spacing */
+    }
+}
+
+/* Responsive adjustments for tablets */
+@media (min-width: 661px) and (max-width: 1024px) {
+    .game-board {
+        gap: 0.5vw; /* Reduces the gap for tablets */
+        width: min(60vw, 60vh); /* Decreases the board size for tablets */
+        height: min(60vw, 60vh); /* Decreases the board size for tablets */
+    }
+
+    .final-word {
+        font-size: 2.2vh; /* Adjusts font size for tablets */
+        margin-top: 2vh; /* Adjust spacing */
+    }
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 660px) {
+    .game-board {
+        gap: 0.4vw; /* Further reduces the gap for mobile devices */
+        width: min(70vw, 70vh); /* Decreases the board size for mobile devices */
+        height: min(70vw, 70vh); /* Decreases the board size for mobile devices */
+    }
+
+    .final-word {
+        font-size: 2.5vh; /* Adjusts font size for mobile devices */
+        margin-top: 2vh; /* Adjust spacing */
+    }
+}
+
+/* Responsive adjustments for smaller mobile screens */
+@media (max-width: 480px) {
+    .game-board {
+        gap: 0.3vw; /* Minimal gap for smaller mobile screens */
+        width: 75vw; /* Decreases the board size for smaller screens */
+        height: 75vw; /* Decreases the board size for smaller screens */
+    }
+
+    .final-word {
+        font-size: 2.8vh; /* Adjusts font size for smaller screens */
+        margin-top: 2vh; /* Adjust spacing */
+    }
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 320px) {
+    .game-board {
+        gap: 0.2vw; /* Minimal gap for very small screens */
+        width: 80vw; /* Decreases the board size for very small screens */
+        height: 80vw; /* Decreases the board size for very small screens */
+    }
+
+    .final-word {
+        font-size: 3vh; /* Adjusts font size for very small screens */
+        margin-top: 2vh; /* Adjust spacing */
+    }
+}
+

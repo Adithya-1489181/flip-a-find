@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Strings and Silence – Scene 3</title>
+  <link rel="stylesheet" href="part1scene2.css" />
+</head>
+<body>
+  <div class="scene">
+
+    <!-- Sherlock's Container -->
+    <div class="character-container sherlock-container">
+      <img src="../images/sherlock.png" alt="Sherlock" class="character-image" />
+      <div class="speech sherlock" id="sherlock-bubble">
+        <strong>Sherlock:</strong> <span id="dialogue-sherlock"></span>
+      </div>
+    </div>
+
+    <!-- Watson's Container -->
+    <div class="character-container watson-container hidden">
+      <img src="../images/watson.png" alt="Watson" class="character-image" />
+      <div class="speech watson" id="watson-bubble">
+        <strong>Watson:</strong> <span id="dialogue-watson"></span>
+      </div>
+    </div>
+
+    <!-- Sealed Envelope -->
+    <img class="element envelope" src="../images/envelop.png" alt="Envelope" id="envelope" />
+
+    <!-- Moriarty's Letter -->
+    <div class="letter hidden" id="letter">
+      <p id="letter-text"></p>
+      <p class="signature">– M</p>
+    </div>
+  
+    <!-- Overlay to transition -->
+    <div class="transition hidden" id="transition">
+      <p>Loading first puzzle...</p>
+    </div>
+  </div>
+  <script src="part1scene2.js"></script>
+</body>
+</html>
