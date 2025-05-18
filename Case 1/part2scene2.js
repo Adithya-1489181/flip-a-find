@@ -88,12 +88,8 @@ function showNextDialogue() {
 }
 
 function transitionToCardGame() {
-  // Remove the 'hidden' class to show the transition overlay
-  transition.classList.remove("hidden");
-
-  // Wait for 2 seconds before redirecting
   setTimeout(() => {
-    window.location.href = "./part3scene1.html"; // Redirect to the card game
+    window.location.href = "./part2scene3.html"; // Redirect to the card game
   }, 2000);
 }
 

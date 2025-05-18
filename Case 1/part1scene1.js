@@ -8,20 +8,20 @@ const dialogues = [
 ];
 
 let index = 0;
-const dialogueSherlock = document.getElementById("dialogue");
-const dialogueWatson = document.getElementById("dialogue-watson");
-const nextBtn = document.getElementById("nextBtn");
-const nextBtnWatson = document.getElementById("nextBtnWatson"); // Add this line to select Watson's button
-const sherlockContainer = document.querySelector(".sherlock-container");
-const watsonContainer = document.querySelector(".watson-container");
+const sherlocks_dialogue = document.getElementById("dialogue");
+const watsons_dialogue = document.getElementById("dialogue-watson");
+const next_button = document.getElementById("nextBtn");
+const next_button_watson = document.getElementById("nextBtnWatson"); // Add this line to select Watson's button
+const sherlocks_container = document.querySelector(".sherlock-container");
+const watsons_container = document.querySelector(".watson-container");
 
-const typeSound = new Audio("../audio/typewriter.mp3");
-typeSound.loop = true;
-typeSound.volume = 0.2;
+const text_type_sound = new Audio("../audio/typewriter.mp3");
+text_type_sound.loop = true;
+text_type_sound.volume = 0.2;
 
-let isTyping = false; // Flag to track typing status
+let is_typing = false; // Flag to track typing status
 
-function typeText(dialogueEl, text, i = 0) {
+function typing_text(dialogueEl, text, i = 0) {
   if (!dialogueEl) {
     console.error("Dialogue element not found in the DOM.");
     return;
@@ -29,40 +29,40 @@ function typeText(dialogueEl, text, i = 0) {
 
   if (i === 0) {
     dialogueEl.textContent = ""; // Clear the content at the start of typing
-    typeSound.currentTime = 0;
-    typeSound.play(); // 🔊 Start sound on new dialogue
+    text_type_sound.currentTime = 0;
+    text_type_sound.play(); // 🔊 Start sound on new dialogue
   }
 
   if (i < text.length) {
     dialogueEl.textContent += text.charAt(i); // Append one character at a time
-    setTimeout(() => typeText(dialogueEl, text, i + 1), 30); // Continue typing
+    setTimeout(() => typing_text(dialogueEl, text, i + 1), 30); // Continue typing
   } else {
-    typeSound.pause(); // ⏹ Stop sound after full text typed
-    typeSound.currentTime = 0;
-    isTyping = false; // Reset typing flag
+    text_type_sound.pause(); // ⏹ Stop sound after full text typed
+    text_type_sound.currentTime = 0;
+    is_typing = false; // Reset typing flag
   }
 }
 
-function showNextDialogue() {
-  if (isTyping) return; // Prevent starting a new dialogue while typing
+function show_next_dialogue() {
+  if (is_typing) return; // Prevent starting a new dialogue while typing
 
   if (index < dialogues.length) {
-    const currentDialogue = dialogues[index];
+    const current_dialogue= dialogues[index];
 
     // Show the correct character and dialogue
-    if (currentDialogue.speaker === "Sherlock") {
-      sherlockContainer.classList.remove("hidden");
-      watsonContainer.classList.add("hidden");
-      typeText(dialogueSherlock, currentDialogue.text); // Use Sherlock's dialogue element
-    } else if (currentDialogue.speaker === "Watson") {
-      watsonContainer.classList.remove("hidden");
-      sherlockContainer.classList.add("hidden");
-      typeText(dialogueWatson, currentDialogue.text); // Use Watson's dialogue element
+    if (current_dialogue.speaker === "Sherlock") {
+      sherlocks_container.classList.remove("hidden");
+      watsons_container.classList.add("hidden");
+      typing_text(sherlocks_dialogue, current_dialogue.text); // Use Sherlock's dialogue element
+    } else if (current_dialogue.speaker === "Watson") {
+      watsons_container.classList.remove("hidden");
+      sherlocks_container.classList.add("hidden");
+      typing_text(watsons_dialogue, current_dialogue.text); // Use Watson's dialogue element
     }
 
     index++;
     if (index === dialogues.length) {
-      nextBtn.textContent = "Play Game ▶";
+      next_button.textContent = "Play Game ▶";
     }
   } else {
     window.location.href = "./part1scene2.html"; // Redirect to your game
@@ -70,10 +70,12 @@ function showNextDialogue() {
 }
 
 // Attach event listeners to both buttons
-nextBtn.addEventListener("click", showNextDialogue);
-nextBtnWatson.addEventListener("click", showNextDialogue); // Add this line
+next_button.addEventListener("click", show_next_dialogue);
+next_button_watson.addEventListener("click", show_next_dialogue); // Add this line
 
 // Start first dialogue
-showNextDialogue();
+show_next_dialogue();
+
+
 
 

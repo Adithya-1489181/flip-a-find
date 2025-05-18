@@ -9,7 +9,7 @@ const notepad = document.getElementById('notepad');
 
 const typeSound = new Audio('../audio/typewriter.mp3');
 typeSound.loop = true;
-typeSound.volume = 0.2; // Adjust as needed
+typeSound.volume = 0.2; 
 
 playIntro();
 
@@ -22,7 +22,7 @@ function playIntro() {
 
 function typeWriter() {
   if (index === 0) {
-    typeSound.play(); // 🔊 Start sound when typing begins
+    typeSound.play(); 
   }
 
   if (index < storyText.length) {
@@ -30,7 +30,7 @@ function typeWriter() {
     index++;
     setTimeout(typeWriter, speed);
   } else {
-    typeSound.pause(); // ✅ Stop the sound after typing is done
+    typeSound.pause(); 
     typeSound.currentTime = 0;
 
     startBtn.classList.remove("hidden");
