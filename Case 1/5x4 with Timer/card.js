@@ -6,11 +6,11 @@ const finalWordDiv = document.getElementById('finalWord');
 const finalOverlay = document.getElementById('finalOverlay'); // Final overlay div
 const finalMessage = document.getElementById('finalMessage'); // Final word message
 const continueButton = document.getElementById('continueButton'); // Continue button
-const emojis = ['D', 'A', 'H', 'L', 'I', '🎻', '🎼', '🎵', '🎤', '🎹']; // Add more emojis
+const emojis = ['V', 'O', 'L', 'U', 'M', 'E', '🎼', '🎵', '🎤', '🎹']; // Add more emojis
 let cards = [...emojis, ...emojis]; // duplicate for matching
 let firstCard, secondCard;
 let lockBoard = false;
-const finalWord = "DAHLIA";
+const finalWord = "VOLUME";
 let revealedLetters = Array(finalWord.length).fill('_');
 let matchedPairs = 0; // Counter for matched pairs
 let timeLeft = 180; // Set the time limit in seconds
@@ -144,7 +144,7 @@ function showFinalOverlay() {
 
 // Handle continue button click
 continueButton.addEventListener('click', () => {
-  finalOverlay.style.display = 'none'; // Hide the overlay
+  window.location.href = "../part3scene2.html"; // Redirect to the next scene
 });
 
 function resetTurn() {

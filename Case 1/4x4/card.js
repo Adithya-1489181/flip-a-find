@@ -1,4 +1,3 @@
-// script.js
 const board = document.getElementById('gameBoard');
 const instructions = document.getElementById('instructions');
 const playButton = document.getElementById('playButton');

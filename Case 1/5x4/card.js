@@ -10,7 +10,7 @@ const emojis = ['S', 'T', 'R', 'A', 'I', 'N', '🎼', '🎵', '🎤', '🎹']; /
 let cards = [...emojis, ...emojis]; // duplicate for matching
 let firstCard, secondCard;
 let lockBoard = false;
-const finalWord = "DAHLIA";
+const finalWord = "STRAIN"; // Final word to reveal
 let revealedLetters = Array(finalWord.length).fill('_');
 let matchedPairs = 0; // Counter for matched pairs
 

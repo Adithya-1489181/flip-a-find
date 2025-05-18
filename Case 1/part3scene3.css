@@ -1,0 +1,334 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: url('../images/office-background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+  overflow: hidden;
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Envelope */
+.envelope {
+  position: absolute;
+  top: 10%;
+  left: 45%;
+  max-width: 10vw;
+  cursor: pointer;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 5px #fff); }
+  to { filter: drop-shadow(0 0 15px #ffcc00); }
+}
+
+/* Character Container */
+.character-container {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  width: 90%;
+  max-width: 2000px; /* Increase max width to allow larger characters */
+  gap: 1rem;
+}
+
+/* Watson's Container */
+.watson-container {
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 5%;
+  left: 0; /* Align Watson to the left edge of the screen */
+  width: 90%; /* Ensure the container fits within the screen */
+  max-width: 1000px;
+  gap: 1rem;
+}
+
+/* Character Image */
+.character-image {
+  height: 95vh; /* Increase height to make them larger */
+  max-height: 350px; /* Ensure they fit within the screen */
+  object-fit: contain;
+}
+
+/* Speech Bubbles */
+.speech {
+  max-width: 70%;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #000;
+}
+
+.sherlock {
+  background: rgba(255, 255, 255, 0.85);
+  color: #222;
+  font-family: 'Times New Roman', serif;
+}
+
+.watson {
+  margin-left: auto; /* Push the speech bubble to the right */
+  margin-right: 2em; /* Add some space between the bubble and the right edge */
+  max-width: 70%; /* Ensure the bubble does not exceed 70% of the container width */
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #000;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-family: 'Arial Rounded MT Bold', sans-serif;
+  position: relative;
+}
+
+/* Style for the Continue button inside dialogue bubbles */
+.speech button {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Default Style for the Continue Button */
+.continue-button {
+  display: block;
+  margin: 1rem auto; /* Center the button horizontally */
+  padding: 1rem 2rem; /* Default padding */
+  font-size: 1.5rem; /* Default font size */
+  border: none;
+  background: #222;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover Effect */
+.continue-button:hover {
+  background: #444;
+  transform: scale(1.05);
+}
+
+/* Letter */
+.letter {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f3e5ab;
+  color: #222;
+  font-family: 'Courier New', monospace;
+  padding: 2rem;
+  width: 70%;
+  max-width: 500px;
+  border: 2px solid #000;
+  display: none; /* Initially hidden */
+  z-index: 10;
+}
+
+.letter .signature {
+  text-align: right;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* Transition Overlay */
+.transition {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000d0; /* Semi-transparent black */
+    color: #fff;
+    font-size: 1.5rem;
+    font-family: 'Georgia', serif;
+    display: flex; /* Ensure it uses flexbox for centering */
+    align-items: center;
+    justify-content: center;
+    z-index: 999; /* Ensure it appears above other elements */
+    animation: fadeIn 1s ease; /* Optional fade-in animation */
+  } 
+
+/* Hidden Elements */
+.hidden {
+  display: none; /* Ensure this hides the element */
+}
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Default Style for the Continue Button */
+.continue-button2 {
+  display: block;
+  margin: 1rem auto; /* Center the button horizontally */
+  padding: 1rem 2rem; /* Default padding */
+  font-size: 1.5rem; /* Default font size */
+  border: none;
+  background: #222;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+/* Hover Effect */
+.continue-button2:hover {
+  background: #444;
+  transform: scale(1.05);
+}
+
+
+/* Media Query for Larger Screens (1024px and above) */
+@media (min-width: 1024px) {
+  body {
+    font-size: 18px; /* Increase base font size */
+  }
+
+  .speech {
+    font-size: 1.2rem; /* Increase font size for speech bubbles */
+  }
+
+  .letter {
+    font-size: 1.2rem; /* Increase font size for the letter */
+  }
+
+  .transition {
+    font-size: 2rem; /* Increase font size for the transition overlay */
+  }
+
+  .continue-button,
+  .continue-button2 {
+    font-size: 0.9rem; /* Slightly larger font size for larger screens */
+    padding: 0.6rem 1.2rem; /* Adjusted padding for larger screens */
+  }
+}
+
+/* Media Query for Larger Screens (1024px and above) */
+@media (min-width: 2560px) {
+  body {
+    font-size: 32px; /* Increase base font size */
+  }
+
+  .speech {
+    font-size: 3rem; /* Increase font size for speech bubbles */
+  }
+
+  .letter {
+    font-size: 3rem; /* Increase font size for the letter */
+  }
+
+  .transition {
+    font-size: 3.7rem; /* Increase font size for the transition overlay */
+  }
+
+  .continue-button,
+  .continue-button2 {
+    font-size: 1.8rem; /* Adjusted font size for very large screens */
+    padding: 1.5rem 1.85rem; /* Adjusted padding for very large screens */
+  }
+}
+
+/* Media Query for Tablets (820px and below) */
+@media (max-width: 820px) {
+  .envelope {
+    max-width: 25vw; /* Increase size for smaller screens */
+    top: 12%; /* Adjust top position for better alignment */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure proper centering */
+  }
+}
+
+/* Media Query for Tablets (768px and below) */
+@media (max-width: 768px) {
+  .envelope {
+    max-width: 15vw; /* Increase size for smaller screens */
+    top: 12%; /* Adjust top position for better alignment */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure proper centering */
+  }
+
+  .watson-container {
+    bottom: 5%; /* Adjust position for smaller screens */
+    left: 0; /* Keep Watson aligned to the left edge */
+    width: 95%; /* Ensure the container fits within the screen */
+  }
+
+  .watson {
+    left: -4em;
+    margin-right: -2em; /* Reduce the right margin for smaller screens */
+    font-size: 1rem; /* Adjust font size for tablets */
+  }
+}
+
+/* Media Query for Mobile Screens (480px and below) */
+@media (max-width: 480px) {
+  .envelope {
+    max-width: 20vw; /* Further increase size for very small screens */
+    top: 15%; /* Adjust top position for better alignment */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure proper centering */
+  }
+
+  .watson-container {
+    bottom: 8%; /* Adjust position for mobile screens */
+    left: -20%; /* Keep Watson aligned to the left edge */
+    width: 100%; /* Ensure the container fits within the screen */
+    gap: 1vw; /* Increase gap for better spacing */
+  }
+
+  .watson {
+    left: -20%;
+    margin-right: -16em;
+    font-size: 0.9rem; /* Adjust font size for mobile screens */
+  }
+}
+
+/* Media Query for Mobile Screens (320px and below) */
+@media (max-width: 320px) {
+  .envelope {
+    max-width: 25vw; /* Further increase size for very small screens */
+    top: 15%; /* Adjust top position for better alignment */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure proper centering */
+  }
+  .watson-container {
+    bottom: 8%; /* Adjust position for mobile screens */
+    left: -28%; /* Keep Watson aligned to the left edge */
+    width: 100%; /* Ensure the container fits within the screen */
+    gap: 10vw; /* Increase gap for better spacing */
+  }
+
+  .watson {
+    left: -8em;
+    margin-right: -21em;
+    margin-right: 1em; /* Further reduce the right margin for very small screens */
+    font-size: 0.9rem; /* Adjust font size for mobile screens */
+  }
+}
+
