@@ -3,25 +3,30 @@ const dialogues = [
   { speaker: "Sherlock", text: "Dahlia isn’t missing. I believe she’s involved. And Moriarty’s using her as his instrument. Let's give her a visit." }
 ];
 
+
 let index = 0;
-const sherlockContainer = document.querySelector(".sherlock-container");
-const watsonContainer = document.querySelector(".watson-container");
-const dialogueSherlock = document.getElementById("dialogue-sherlock");
-const dialogueWatson = document.getElementById("dialogue-watson");
+const sherlocks_container = document.querySelector(".sherlock-container");
+const watsons_container = document.querySelector(".watson-container");
+const dialogue_sherlock = document.getElementById("dialogue-sherlock");
+const dialogue_watson = document.getElementById("dialogue-watson");
 const transition = document.getElementById("transition");
 
-const typeSound = new Audio("../audio/typewriter.mp3");
-typeSound.loop = true;
-typeSound.volume = 0.2;
 
-let isTyping = false;
+const typing_sound = new Audio("../audio/typewriter.mp3");
+typing_sound.loop = true;
+typing_sound.volume = 0.2;
 
-function typeText(dialogueEl, text, callback) {
+
+let is_typing = false;
+
+
+function type_text(dialogueEl, text, callback) {
   let i = 0;
-  isTyping = true;
+  is_typing = true;
   dialogueEl.textContent = "";
-  typeSound.currentTime = 0;
-  typeSound.play();
+  typing_sound.currentTime = 0;
+  typing_sound.play();
+
 
   const interval = setInterval(() => {
     if (i < text.length) {
@@ -29,67 +34,77 @@ function typeText(dialogueEl, text, callback) {
       i++;
     } else {
       clearInterval(interval);
-      typeSound.pause();
-      typeSound.currentTime = 0;
-      isTyping = false;
+      typing_sound.pause();
+      typing_sound.currentTime = 0;
+      is_typing = false;
       if (callback) callback();
     }
   }, 45);
 }
 
-function showNextDialogue() {
-  if (isTyping) return;
+
+function show_next_dialogue() {
+  if (is_typing) return;
+
 
   console.log("Current index:", index, "Total dialogues:", dialogues.length);
 
-  if (index < dialogues.length) {
-    const currentDialogue = dialogues[index]; // Use the current index
 
-    if (currentDialogue.speaker === "Sherlock") {
-      sherlockContainer.classList.remove("hidden");
-      watsonContainer.classList.add("hidden");
-      typeText(dialogueSherlock, currentDialogue.text, () => {
+  if (index < dialogues.length) {
+    const current_dialogue = dialogues[index]; // Use the current index
+
+
+    if (current_dialogue.speaker === "Sherlock") {
+      sherlocks_container.classList.remove("hidden");
+      watsons_container.classList.add("hidden");
+      type_text(dialogue_sherlock, current_dialogue.text, () => {
         index++; // Increment the index after Sherlock's dialogue
-        showNextDialogue(); // Proceed to the next dialogue
+        show_next_dialogue(); // Proceed to the next dialogue
       });
-    } else if (currentDialogue.speaker === "Watson") {
-      watsonContainer.classList.remove("hidden");
-      sherlockContainer.classList.add("hidden");
-      typeText(dialogueWatson, currentDialogue.text, () => {
+    } else if (current_dialogue.speaker === "Watson") {
+      watsons_container.classList.remove("hidden");
+      sherlocks_container.classList.add("hidden");
+      type_text(dialogue_watson, current_dialogue.text, () => {
         setTimeout(() => {
           index++; // Increment the index after Watson's dialogue
-          showNextDialogue(); // Proceed to the next dialogue
+          show_next_dialogue(); // Proceed to the next dialogue
         }, 1800);
       });
     }
   } else {
     console.log("Creating Continue button..."); // Debugging log
 
+
     // Determine the current speaker's dialogue bubble
-    const currentDialogueBubble =
+    const current_dialogueBubble =
       dialogues[index - 1].speaker === "Sherlock"
-        ? dialogueSherlock
-        : dialogueWatson;
+        ? dialogue_sherlock
+        : dialogue_watson;
+
 
     // Create a "Continue" button after the last dialogue
-    const continueButton2 = document.createElement("button");
-    continueButton2.textContent = "Continue →";
-    continueButton2.classList.add("continue-button2"); // Add the CSS class
+    const continue_button2 = document.createElement("button");
+    continue_button2.textContent = "Continue →";
+    continue_button2.classList.add("continue-button2"); // Add the CSS class
+
 
     // Append the button to the current speaker's dialogue bubble
-    currentDialogueBubble.appendChild(continueButton2);
+    current_dialogueBubble.appendChild(continue_button2);
+
 
     // Add an event listener to the button
-    continueButton2.addEventListener("click", () => {
+    continue_button2.addEventListener("click", () => {
       console.log("Continue button clicked!"); // Debugging log
-      transitionToCardGame(); // Trigger the transition to the card game
+      transition_to_cardgame(); // Trigger the transition to the card game
     });
   }
 }
 
-function transitionToCardGame() {
+
+function transition_to_cardgame() {
   // Remove the 'hidden' class to show the transition overlay
   transition.classList.remove("hidden");
+
 
   // Wait for 2 seconds before redirecting
   setTimeout(() => {
@@ -97,5 +112,10 @@ function transitionToCardGame() {
   }, 2000);
 }
 
-showNextDialogue(); // Start the dialogue sequence
+
+show_next_dialogue(); // Start the dialogue sequence
+
+
+
+
 
