@@ -140,7 +140,7 @@ function transitionToCardGame() {
   // Wait for 2 seconds before redirecting
   setTimeout(() => {
     console.log("Redirecting to memory-game.html..."); // Debugging log
-    window.location.href = "./5x4 with timer/card.html"; // Redirect to the card game
+    window.location.href = "./5x4 with Timer/card.html"; // Redirect to the card game
   }, 2000);
 }
 
