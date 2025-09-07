@@ -48,9 +48,10 @@ Source code: [GitHub Repo](https://github.com/Adithya-1489181/flip-a-find)
 
 ---
 
-## 🙌 Credits & Acknowledgements  
+## 🙌 Credits & Acknowledgements
 Guided by **Pradeep Kumar K G**.  
 Developed as part of a project in **Computer Science & Engineering** Skill Lab.  
 Special thanks to teammates: Ashwini Edakkana, Arpita Balachandra Naik, Khushi VR.  
 Musics & Images from: [Uppbeat](https://uppbeat.io), [Pixabay](https://pixabay.com), [Freepik](https://www.freepik.com/)
+
 ---
